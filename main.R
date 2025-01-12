@@ -40,8 +40,8 @@ dadoschapeco$Dia <- as.numeric(format(dadoschapeco$Data, format = "%d"))
 dadoschapeco$Mes <- as.numeric(format(dadoschapeco$Data, format = "%m"))
 dadoschapeco$Ano <- as.numeric(format(dadoschapeco$Data, format = "%Y"))
 
-#install.packages("tidyverse")
-#install.packages("plotly")
+install.packages("tidyverse")
+install.packages("plotly")
 
 library(tidyverse)
 library(plotly)
@@ -73,4 +73,12 @@ grafico <- plot_ly() %>%
 
 grafico
 
+grafico2 <- plot_ly() %>%
+  add_trace( x = max(temperatura$TempMedia, na.rm=TRUE), y='Xanxerê', type = 'bar', name = 'Temperatura Máxima Xanxerê', marker = list(color = 'orange')) %>%
+  add_trace(x = max(temperaturachap$TempMedia, na.rm=TRUE), y='Chapecó',  type = 'bar', name = 'Temperatura Máxima Chapecó', marker = list(color = 'red')) %>%
+  add_trace( x = min(temperatura$TempMedia, na.rm=TRUE), y='Xanxerê', type = 'bar', name = 'Temperatura Mínima Xanxerê', marker = list(color = 'blue')) %>%
+  add_trace(x = min(temperaturachap$TempMedia, na.rm=TRUE), y='Chapecó', type = 'bar', name = 'Temperatura Mínima Chapecó', marker = list(color = 'gray')) %>%
+  layout(title = "Temperaturas Mínimas e Máximas - Xanxerê e Chapecó",xaxis = list(title = "Temperatura (°C)"), yaxis = list(title='Cidades'),barmode = 'group'
+          )
+grafico2
 #save.image("Aula01R.RData")
