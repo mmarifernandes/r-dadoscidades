@@ -53,6 +53,18 @@ mean(temperatura$TempMedia, na.rm=TRUE)
 min(temperatura$TempMedia, na.rm=TRUE)
 max(temperatura$TempMedia, na.rm=TRUE)
 
+mean(dados$Prec, na.rm=TRUE)
+mean(dadoschapeco$Prec, na.rm=TRUE)
+
+mean(dados$VentoVelMedia, na.rm=TRUE)
+mean(dadoschapeco$VentoVelMedia, na.rm=TRUE)
+
+min(dados$UmidadeMedia, na.rm=TRUE)
+min(dadoschapeco$UmidadeMedia, na.rm=TRUE)
+
+max(dados$VentoRajMax, na.rm=TRUE)
+max(dadoschapeco$VentoRajMax, na.rm=TRUE)
+
 resumo<-summary(temperatura$TempMedia)
 resumo
 range(temperatura$Temp, na.rm = TRUE)
@@ -63,6 +75,21 @@ anos <- dados%>% group_by(Ano)%>%
 anosc <- dadoschapeco%>% group_by(Ano)%>%
   summarise(TempMedia = mean(TempMedia, na.rm=TRUE))
 View(anosc)
+
+
+graficorajada <- plot_ly() %>%
+  add_trace( x = dados$Data, y = dados$VentoRajMax, type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
+  )
+
+graficorajada
+
+graficorajadac <- plot_ly() %>%
+  add_trace( x = dadoschapeco$Data, y = dadoschapeco$VentoRajMax, type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  layout(title = "Velocidade Máxima Rajada de Vento - Chapecó",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
+  )
+
+graficorajadac
 
 
 grafico <- plot_ly() %>%
@@ -81,4 +108,5 @@ grafico2 <- plot_ly() %>%
   layout(title = "Temperaturas Mínimas e Máximas - Xanxerê e Chapecó",xaxis = list(title = "Temperatura (°C)"), yaxis = list(title='Cidades'),barmode = 'group'
           )
 grafico2
-#save.image("Aula01R.RData")
+
+save.image("Aula01R.RData")
