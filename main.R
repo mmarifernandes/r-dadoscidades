@@ -78,35 +78,34 @@ View(anosc)
 
 
 graficorajada <- plot_ly() %>%
-  add_trace( x = dados$Data, y = dados$VentoRajMax, type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  add_trace( x = dados$Data[1858:4018], y = dados$VentoRajMax[1858:4018], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  add_trace( x = dadoschapeco$Data, y = dadoschapeco$VentoRajMax, type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
   layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
   )
 
 graficorajada
 
-graficorajadac <- plot_ly() %>%
-  add_trace( x = dadoschapeco$Data, y = dadoschapeco$VentoRajMax, type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
-  layout(title = "Velocidade Máxima Rajada de Vento - Chapecó",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
+
+graficorajadazoom <- plot_ly() %>%
+  add_trace( x = dados$Data[2404:3565], y = dados$VentoRajMax[2404:3565], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  add_trace( x = dadoschapeco$Data[499:1660], y = dadoschapeco$VentoRajMax[499:1660], type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
+  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
   )
 
-graficorajadac
+graficorajadazoom
 
+plot(dadoschapeco$Data,dadoschapeco$TempMedia,ylim =c(-5,32),type="l" )
+points(dadoschapeco$Data,dadoschapeco$TempMax,type="l",col="red" )
+points(dadoschapeco$Data,dadoschapeco$TempMin,type="l",col="blue" )
 
 grafico <- plot_ly() %>%
-  add_trace( x = anos$Ano, y = anos$TempMedia, type = 'bar', name = 'Xanxerê', marker = list(color = 'pink')) %>%
+  add_trace( x = anos$Ano[7:12], y = anos$TempMedia[7:12], type = 'bar', name = 'Xanxerê', marker = list(color = 'blue')) %>%
   add_trace(x = anosc$Ano, y = anosc$TempMedia, type = 'bar', name = 'Chapecó', marker = list(color = 'red')) %>%
   layout(title = "Temperatura Média Anual - Xanxerê e Chapecó",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
   )
 
 grafico
 
-grafico2 <- plot_ly() %>%
-  add_trace( x = max(temperatura$TempMedia, na.rm=TRUE), y='Xanxerê', type = 'bar', name = 'Temperatura Máxima Xanxerê', marker = list(color = 'orange')) %>%
-  add_trace(x = max(temperaturachap$TempMedia, na.rm=TRUE), y='Chapecó',  type = 'bar', name = 'Temperatura Máxima Chapecó', marker = list(color = 'red')) %>%
-  add_trace( x = min(temperatura$TempMedia, na.rm=TRUE), y='Xanxerê', type = 'bar', name = 'Temperatura Mínima Xanxerê', marker = list(color = 'blue')) %>%
-  add_trace(x = min(temperaturachap$TempMedia, na.rm=TRUE), y='Chapecó', type = 'bar', name = 'Temperatura Mínima Chapecó', marker = list(color = 'gray')) %>%
-  layout(title = "Temperaturas Mínimas e Máximas - Xanxerê e Chapecó",xaxis = list(title = "Temperatura (°C)"), yaxis = list(title='Cidades'),barmode = 'group'
-          )
-grafico2
 
-save.image("Aula01R.RData")
+
+#save.image("Aula01R.RData")
