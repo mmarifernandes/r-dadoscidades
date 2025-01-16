@@ -40,8 +40,8 @@ dadoschapeco$Dia <- as.numeric(format(dadoschapeco$Data, format = "%d"))
 dadoschapeco$Mes <- as.numeric(format(dadoschapeco$Data, format = "%m"))
 dadoschapeco$Ano <- as.numeric(format(dadoschapeco$Data, format = "%Y"))
 
-install.packages("tidyverse")
-install.packages("plotly")
+#install.packages("tidyverse")
+#install.packages("plotly")
 
 library(tidyverse)
 library(plotly)
@@ -50,8 +50,13 @@ temperatura <- select(dados, TempMedia)
 temperaturachap <- select(dadoschapeco, TempMedia)
 
 mean(temperatura$TempMedia, na.rm=TRUE)
-min(temperatura$TempMedia, na.rm=TRUE)
-max(temperatura$TempMedia, na.rm=TRUE)
+mean(temperaturachap$TempMedia, na.rm=TRUE)
+
+mean(dados$TempMax, na.rm=TRUE)
+mean(dadoschapeco$TempMax, na.rm=TRUE)
+
+mean(dados$TempMin, na.rm=TRUE)
+mean(dadoschapeco$TempMin, na.rm=TRUE)
 
 mean(dados$Prec, na.rm=TRUE)
 mean(dadoschapeco$Prec, na.rm=TRUE)
@@ -59,11 +64,11 @@ mean(dadoschapeco$Prec, na.rm=TRUE)
 mean(dados$VentoVelMedia, na.rm=TRUE)
 mean(dadoschapeco$VentoVelMedia, na.rm=TRUE)
 
-min(dados$UmidadeMedia, na.rm=TRUE)
-min(dadoschapeco$UmidadeMedia, na.rm=TRUE)
+mean(dados$UmidadeMedia, na.rm=TRUE)
+mean(dadoschapeco$UmidadeMedia, na.rm=TRUE)
 
-max(dados$VentoRajMax, na.rm=TRUE)
-max(dadoschapeco$VentoRajMax, na.rm=TRUE)
+mean(dados$VentoRajMax, na.rm=TRUE)
+mean(dadoschapeco$VentoRajMax, na.rm=TRUE)
 
 resumo<-summary(temperatura$TempMedia)
 resumo
@@ -99,8 +104,8 @@ points(dadoschapeco$Data,dadoschapeco$TempMax,type="l",col="red" )
 points(dadoschapeco$Data,dadoschapeco$TempMin,type="l",col="blue" )
 
 grafico <- plot_ly() %>%
-  add_trace( x = anos$Ano[7:12], y = anos$TempMedia[7:12], type = 'bar', name = 'Xanxerê', marker = list(color = 'blue')) %>%
-  add_trace(x = anosc$Ano, y = anosc$TempMedia, type = 'bar', name = 'Chapecó', marker = list(color = 'red')) %>%
+  add_trace( x = anos$Ano[7:12], y = anos$TempMedia[7:12], type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
+  add_trace(x = anosc$Ano, y = anosc$TempMedia, type = 'bar', name = 'Chapecó', marker = list(color = 'blue')) %>%
   layout(title = "Temperatura Média Anual - Xanxerê e Chapecó",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
   )
 
