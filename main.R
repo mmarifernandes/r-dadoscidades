@@ -111,6 +111,94 @@ grafico <- plot_ly() %>%
 
 grafico
 
+dados_agrupados <- dados %>%
+  group_by(Ano) %>%
+  summarise(
+    TempMax = mean(TempMax, na.rm = TRUE),
+    TempMin = mean(TempMin, na.rm = TRUE),
+    TempMedia = mean(TempMedia, na.rm = TRUE)
+  )
 
+fig <- plot_ly(dados_agrupados[7:12, ], x = ~Ano, y = ~TempMax, type = 'scatter', mode = 'lines',
+               line = list(color = 'transparent'),
+               showlegend = FALSE, name = 'TempMax') 
+fig <- fig %>% add_trace(y = ~TempMin, type = 'scatter', mode = 'lines',
+                         fill = 'tonexty', fillcolor = 'rgba(184,90,90,0.2)', line = list(color = 'transparent'),
+                         showlegend = FALSE, name = 'TempMin') 
+fig <- fig %>% add_trace(y = ~TempMedia, type = 'scatter', mode = 'lines',
+                         line = list(color = 'rgb(184,90,90)'),
+                         name = 'TempMedia') 
+fig <- fig %>% layout(
+  title = "Temperatura Média, Máxima e Mínima Anual de Xanxerê",
+  paper_bgcolor = 'rgb(255,255,255)', 
+  plot_bgcolor = 'rgb(229,229,229)',
+  xaxis = list(
+    title = "Ano",
+    gridcolor = 'rgb(255,255,255)',
+    showgrid = TRUE,
+    showline = FALSE,
+    showticklabels = TRUE,
+    tickcolor = 'rgb(127,127,127)',
+    ticks = 'outside',
+    zeroline = FALSE
+  ),
+  yaxis = list(
+    title = "Temperatura (°C)",
+    gridcolor = 'rgb(255,255,255)',
+    showgrid = TRUE,
+    showline = FALSE,
+    showticklabels = TRUE,
+    tickcolor = 'rgb(127,127,127)',
+    ticks = 'outside',
+    zeroline = FALSE
+  )
+)
+
+fig
+
+dados_agrupadosC <- dadoschapeco %>%
+  group_by(Ano) %>%
+  summarise(
+    TempMax = mean(TempMax, na.rm = TRUE),
+    TempMin = mean(TempMin, na.rm = TRUE),
+    TempMedia = mean(TempMedia, na.rm = TRUE)
+  )
+
+figC <- plot_ly(dados_agrupadosC, x = ~Ano, y = ~TempMax, type = 'scatter', mode = 'lines',
+               line = list(color = 'transparent'),
+               showlegend = FALSE, name = 'TempMax') 
+figC <- figC %>% add_trace(y = ~TempMin, type = 'scatter', mode = 'lines',
+                         fill = 'tonexty', fillcolor = 'rgba(100,109,201,0.2)', line = list(color = 'transparent'),
+                         showlegend = FALSE, name = 'TempMin') 
+figC <- figC %>% add_trace(y = ~TempMedia, type = 'scatter', mode = 'lines',
+                         line = list(color = 'rgb(100,109,201)'),
+                         name = 'TempMedia') 
+figC <- figC %>% layout(
+  title = "Temperatura Média, Máxima e Mínima Anual de Chapecó",
+  paper_bgcolor = 'rgb(255,255,255)', 
+  plot_bgcolor = 'rgb(229,229,229)',
+  xaxis = list(
+    title = "Ano",
+    gridcolor = 'rgb(255,255,255)',
+    showgrid = TRUE,
+    showline = FALSE,
+    showticklabels = TRUE,
+    tickcolor = 'rgb(127,127,127)',
+    ticks = 'outside',
+    zeroline = FALSE
+  ),
+  yaxis = list(
+    title = "Temperatura (°C)",
+    gridcolor = 'rgb(255,255,255)',
+    showgrid = TRUE,
+    showline = FALSE,
+    showticklabels = TRUE,
+    tickcolor = 'rgb(127,127,127)',
+    ticks = 'outside',
+    zeroline = FALSE
+  )
+)
+
+figC
 
 #save.image("Aula01R.RData")
