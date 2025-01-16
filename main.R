@@ -85,7 +85,7 @@ View(anosc)
 graficorajada <- plot_ly() %>%
   add_trace( x = dados$Data[1858:4018], y = dados$VentoRajMax[1858:4018], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
   add_trace( x = dadoschapeco$Data, y = dadoschapeco$VentoRajMax, type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
-  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (mm)"), barmode = 'group'
+  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
   )
 
 graficorajada
@@ -94,7 +94,7 @@ graficorajada
 graficorajadazoom <- plot_ly() %>%
   add_trace( x = dados$Data[2404:3565], y = dados$VentoRajMax[2404:3565], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
   add_trace( x = dadoschapeco$Data[499:1660], y = dadoschapeco$VentoRajMax[499:1660], type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
-  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (mm)"), barmode = 'group'
+  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
   )
 
 graficorajadazoom
