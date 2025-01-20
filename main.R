@@ -85,7 +85,7 @@ View(anosc)
 graficorajada <- plot_ly() %>%
   add_trace( x = dados$Data[1858:4018], y = dados$VentoRajMax[1858:4018], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
   add_trace( x = dadoschapeco$Data, y = dadoschapeco$VentoRajMax, type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
-  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
+  layout(title = "Velocidade Máxima Rajada de Vento",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
   )
 
 graficorajada
@@ -94,7 +94,7 @@ graficorajada
 graficorajadazoom <- plot_ly() %>%
   add_trace( x = dados$Data[2404:3565], y = dados$VentoRajMax[2404:3565], type = 'scatter', name = 'Xanxerê', marker = list(color = 'red')) %>%
   add_trace( x = dadoschapeco$Data[499:1660], y = dadoschapeco$VentoRajMax[499:1660], type = 'scatter', name = 'Chapecó', marker = list(color = 'blue')) %>%
-  layout(title = "Velocidade Máxima Rajada de Vento - Xanxerê",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
+  layout(title = "2020 à 2023 Velocidade Máxima Rajada de Vento",xaxis = list(title = "Ano"),yaxis = list(title = "Velocidade Máxima Rajada de Vento (m/s)"), barmode = 'group'
   )
 
 graficorajadazoom
@@ -103,13 +103,6 @@ plot(dadoschapeco$Data,dadoschapeco$TempMedia,ylim =c(-5,32),type="l" )
 points(dadoschapeco$Data,dadoschapeco$TempMax,type="l",col="red" )
 points(dadoschapeco$Data,dadoschapeco$TempMin,type="l",col="blue" )
 
-grafico <- plot_ly() %>%
-  add_trace( x = anos$Ano[7:12], y = anos$TempMedia[7:12], type = 'bar', name = 'Xanxerê', marker = list(color = 'red')) %>%
-  add_trace(x = anosc$Ano, y = anosc$TempMedia, type = 'bar', name = 'Chapecó', marker = list(color = 'blue')) %>%
-  layout(title = "Temperatura Média Anual - Xanxerê e Chapecó",xaxis = list(title = "Ano"),yaxis = list(title = "Temperatura Média (°C)"), barmode = 'group'
-  )
-
-grafico
 
 dados_agrupados <- dados %>%
   group_by(Ano) %>%
@@ -201,4 +194,4 @@ figC <- figC %>% layout(
 
 figC
 
-#save.image("Aula01R.RData")
+save.image("TrabalhoMarinaSabrina.RData")
